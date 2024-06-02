@@ -16,11 +16,12 @@ export class ProductsController {
   createProduct(@Body() createProductDto: CreateProductDto) {
     return this.productsClient.send({
       cmd: 'create_product'
-    }, createProductDto).pipe(
-      catchError(err => {
-        throw new RpcException(err)
-      })
-    )
+    }, createProductDto)
+      .pipe(
+        catchError(err => {
+          throw new RpcException(err)
+        })
+      )
   }
 
   @Get()
@@ -33,11 +34,12 @@ export class ProductsController {
     }, {
       page: paginationDto.page,
       limit: paginationDto.limit
-    }).pipe(
-      catchError(err => {
-        throw new RpcException(err)
-      })
-    )
+    })
+      .pipe(
+        catchError(err => {
+          throw new RpcException(err)
+        })
+      )
 
     // Otra forma de hacerlo:
     /* try {
