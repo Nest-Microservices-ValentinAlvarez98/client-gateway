@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Inject, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, HttpException, Inject, Param, ParseIntPipe, Patch, Post, Query } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { catchError, firstValueFrom } from 'rxjs';
 import { PaginationDto } from 'src/common';
@@ -22,10 +22,12 @@ export class ProductsController {
           throw new RpcException(err)
         })
       )
+
+
   }
 
   @Get()
-  async getAllProducts(@Query() paginationDto: PaginationDto) {
+  getAllProducts(@Query() paginationDto: PaginationDto) {
 
     // Se maneja como un observable, se espera a que se resuelva y se obtiene el valor
     // Send espera la respuesta del microservicio, emit no espera la respuesta
