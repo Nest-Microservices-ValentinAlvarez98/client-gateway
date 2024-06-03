@@ -24,6 +24,8 @@ async function bootstrap() {
 
   await app.listen(envs.port);
 
+  console.log("Hola mundo - Primer cambio desde app-launcher")
+
   logger.log(`Server is running on ${await app.getUrl()}`);
 
 }
