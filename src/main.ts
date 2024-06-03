@@ -10,6 +10,8 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule);
 
+  logger.log(`Initializing Gateway...`)
+
   app.setGlobalPrefix('api');
 
   app.useGlobalPipes(
