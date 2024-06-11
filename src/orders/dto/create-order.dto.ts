@@ -1,10 +1,9 @@
-import { ArrayMinSize, IsArray, ValidateNested } from "class-validator";
+import { ArrayMinSize, IsArray, IsEmail, IsString, Length, ValidateNested } from "class-validator";
 import { Type } from "class-transformer";
 import { OrderItemDto } from "./order-item.dto";
 
 
 export class CreateOrderDto {
-
 
       @IsArray()
       @ArrayMinSize(1)
@@ -13,20 +12,5 @@ export class CreateOrderDto {
       })
       @Type(() => OrderItemDto)
       items: OrderItemDto[]
-
-
-      /* @IsNumber()
-      @IsPositive()
-      totalAmount: number;
-
-      @IsNumber()
-      @IsPositive()
-      totalItems: number;
-
-      @IsEnum(OrderStatusList, {
-            message: `Possible status values are ${OrderStatusList.join(", ")}`
-      })
-      @IsOptional()
-      status?: OrderStatus = OrderStatus.PENDING; */
 
 }
